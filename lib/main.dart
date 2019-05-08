@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/listeler/list.dart';
+import 'package:flutter_example/listeler/list_type.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -10,7 +11,7 @@ void main() {
       appBar: AppBar(
         title: Text("Listeler",style:TextStyle(color: Colors.black),),
       ),
-      body: ListeUseas(),
+      body: ListEtkin(),
     ),
   ));
 }
