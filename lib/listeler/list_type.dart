@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 class ListEtkin extends StatelessWidget {
   List<Student> allStudent = [];
 
@@ -20,13 +20,17 @@ class ListEtkin extends StatelessWidget {
             return Container(
             );
         },
-        itemCount: 20,
+        itemCount: 40,
         itemBuilder: (context, index) {
           return Card(
             color:
                 index % 2 == 0 ? Colors.red.shade200 : Colors.orange.shade400,
             elevation: 4,
             child: ListTile(
+              onTap: () {
+                ToastShow(index);
+                AlertShow(context, index);
+              },
               leading: Icon(Icons.access_time),
               title: Text(allStudent[index]._name),
               subtitle: Text(allStudent[index]._surName),
@@ -42,6 +46,48 @@ class ListEtkin extends StatelessWidget {
         (index) => Student("Student $index Name", "Student $index school",
             "Student $index surname"));
   }
+
+  void ToastShow(int index) {
+    Fluttertoast.showToast(msg: "$index",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        fontSize: 15);
+  }
+
+  void AlertShow(BuildContext context
+      , int index) {
+    showDialog(context: context, barrierDismissible: false, builder: (context) {
+      return AlertDialog(
+        title: Text("Alert Dialog Tittle"),
+        content: SingleChildScrollView(
+            child: ListBody(children: <Widget>[
+              Text("Text ${allStudent[index]}"),
+            ],)
+        ),
+        actions: <Widget>[
+          ButtonTheme.bar(
+            child: ButtonBar(
+              children: <Widget>[
+                FlatButton(
+                  child: Text("Tamam"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                FlatButton(
+                  child: Text("Hayır"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ),
+          )
+        ],
+      );
+    });
+  }
 }
 
 class Student {
@@ -50,4 +96,9 @@ class Student {
   String _school;
 
   Student(this._name, this._school, this._surName);
+
+  @override
+  String toString() {
+    return "Selecter $_name  $_surName  $_school";
+  }
 }
