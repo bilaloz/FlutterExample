@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_example/listeler/input_form.dart';
 
 class Navigasyon extends StatelessWidget {
   String baslik = "BNavigator";
@@ -14,69 +15,89 @@ class Navigasyon extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              RaisedButton(
-                child: Text("Page A Link"),
-                color: Colors.deepOrange,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ANavigasyon(),
-                      ));
-                },
-              ),
-              RaisedButton(
-                child: Text("Page B Link"),
-                color: Colors.red,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BNavigasyon(baslik: baslik),
-                      ));
-                },
-              ),
-              RaisedButton(
-                child: Text("Page c Link"),
-                color: Colors.blue,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CNavigasyon(),
-                      ));
-                },
-              ),
-              RaisedButton(
-                child: Text("Page D get Data"),
-                color: Colors.green,
-                onPressed: () {
-                  Navigator.push(
+          child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              child: Text("Page A Link"),
+              color: Colors.deepOrange,
+              onPressed: () {
+                Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DNavigasyon()),
-                  ).then((popThan) {
-                    debugPrint("Pop Than $popThan");
-                  });
-                },
-              ),
-              RaisedButton(
-                child: Text("Page A get Data"),
-                color: Colors.green,
-                onPressed: () {
-                  Navigator.push(
+                    MaterialPageRoute(
+                      builder: (context) => ANavigasyon(),
+                    ));
+              },
+            ),
+            RaisedButton(
+              child: Text("Page B Link"),
+              color: Colors.red,
+              onPressed: () {
+                Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ENavigasyon()),
-                  ).then((popThan) {
-                    debugPrint("Pop Than $popThan");
-                  });
-                },
-              ),
-            ],
-          ),
-        ));
+                    MaterialPageRoute(
+                      builder: (context) => BNavigasyon(baslik: baslik),
+                    ));
+              },
+            ),
+            RaisedButton(
+              child: Text("Page c Link"),
+              color: Colors.blue,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CNavigasyon(),
+                    ));
+              },
+            ),
+            RaisedButton(
+              child: Text("Page D get Data"),
+              color: Colors.green,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DNavigasyon()),
+                ).then((popThan) {
+                  debugPrint("Pop Than $popThan");
+                });
+              },
+            ),
+            RaisedButton(
+              child: Text("Page A get Data"),
+              color: Colors.green,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ENavigasyon()),
+                ).then((popThan) {
+                  debugPrint("Pop Than $popThan");
+                });
+              },
+            ), RaisedButton(
+              child: Text("Form List"),
+              color: Colors.green,
+              onPressed: () {
+                Navigator.pushNamed(context,"/FormIslemleri"
+                ).then((popThan) {
+                  debugPrint("Pop Than $popThan");
+                });
+              },
+            ), RaisedButton(
+              child: Text("Form İnput"),
+              color: Colors.green,
+              onPressed: () {
+                Navigator.pushNamed(context,"/TextFieldIslemleri"
+                ).then((popThan) {
+                  debugPrint("Pop Than $popThan");
+                });
+              },
+            ),
+          ],
+        ),
+          )),
+    );
   }
 }
 
