@@ -47,6 +47,7 @@ class _StepperExampleState extends State<StepperExample> {
             controlsBuilder: (BuildContext context,
                 {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
               return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   RaisedButton(
                     onPressed: onStepContinue,
@@ -80,6 +81,7 @@ class _StepperExampleState extends State<StepperExample> {
               setState(() {
                 if (_currentStep > 0) {
                   _currentStep--;
+                  _error = false;
                 }
               });
             },
@@ -232,22 +234,23 @@ class _StepperExampleState extends State<StepperExample> {
   }
 
   StepState stateConfig(int i) {
+
     if (_currentStep == i) {
       if (_error) return StepState.error;
       return StepState.editing;
     }
-    if (_currentStep > i)
+    else if (_currentStep > i)
       return StepState.complete;
     else
       return StepState.disabled;
   }
 
   void nextButtonControls() {
+    _error = false;
     switch (_currentStep) {
       case 0:
         if (key0.currentState.validate()) {
           key0.currentState.save();
-          _error = false;
           _currentStep++;
         } else
           _error = true;
@@ -255,7 +258,6 @@ class _StepperExampleState extends State<StepperExample> {
       case 1:
         if (key1.currentState.validate()) {
           key1.currentState.save();
-          _error = false;
           _currentStep++;
         } else
           _error = true;
@@ -263,14 +265,12 @@ class _StepperExampleState extends State<StepperExample> {
       case 2:
         if (key2.currentState.validate()) {
           key2.currentState.save();
-          _error = false;
           _currentStep++;
         } else
           _error = true;
         break;
       case 3:
         if (key3.currentState.validate()) {
-          _error = false;
           _currentStep++;
           key3.currentState.save();
         } else
@@ -278,7 +278,6 @@ class _StepperExampleState extends State<StepperExample> {
         break;
       case 4:
         if (key4.currentState.validate()) {
-          _error = false;
           _currentStep = 4;
           key4.currentState.save();
           Fluttertoast.showToast(msg: "Başarılı bir şekilde kayıt oldunuz.");
