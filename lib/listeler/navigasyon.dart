@@ -93,6 +93,33 @@ class Navigasyon extends StatelessWidget {
                   debugPrint("Pop Than $popThan");
                 });
               },
+            ),RaisedButton(
+              child: Text("Form Diğer"),
+              color: Colors.green,
+              onPressed: () {
+                Navigator.pushNamed(context,"/DigerFormElemanlari"
+                ).then((popThan) {
+                  debugPrint("Pop Than $popThan");
+                });
+              },
+            ),RaisedButton(
+              child: Text("Date Diğer"),
+              color: Colors.green,
+              onPressed: () {
+                Navigator.pushNamed(context,"/TarihAndTime"
+                ).then((popThan) {
+                  debugPrint("Pop Than $popThan");
+                });
+              },
+            ),RaisedButton(
+              child: Text("Date Diğer"),
+              color: Colors.green,
+              onPressed: () {
+                Navigator.pushNamed(context,"/StepperExample"
+                ).then((popThan) {
+                  debugPrint("Pop Than $popThan");
+                });
+              },
             ),
           ],
         ),
